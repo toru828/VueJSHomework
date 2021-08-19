@@ -11,13 +11,14 @@ export default {
         return {
         }
     },
+    props: ["userID"],
     methods: {
-            onClickDeleteButton() {
-                axios.delete('/api/userDelete', {id: 1})
-                    .then(() => {
-                        this.$router.push('/users');
-                    });
-                console.log("aaa");
+        onClickDeleteButton() {
+            axios.delete('/api/userDelete' + this.userID)
+                .then(() => {
+                    this.$router.push('/users');
+                });
+            console.log(this.userID);
         },
     }
 }

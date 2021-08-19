@@ -2011,16 +2011,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
+  props: ["userID"],
   methods: {
     onClickDeleteButton: function onClickDeleteButton() {
       var _this = this;
 
-      axios["delete"]('/api/userDelete', {
-        id: 1
-      }).then(function () {
+      axios["delete"]('/api/userDelete' + this.userID).then(function () {
         _this.$router.push('/users');
       });
-      console.log("aaa");
+      console.log(this.userID);
     }
   }
 });
@@ -24574,7 +24573,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("DeleteUser", {
                                       staticClass: "col-2",
-                                      attrs: { cols: "2" }
+                                      attrs: { cols: "2", userID: user.id }
                                     }),
                                     _vm._v(" "),
                                     _c(
