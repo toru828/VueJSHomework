@@ -17,20 +17,24 @@
             <hr />
             <div>
               <div class="row header">
-                <div class="col-3 card-title text-bold" cols="3">Username</div>
-                <div class="col-3 card-title text-bold" cols="3">Email</div>
-                <div class="col-3 card-title text-bold" cols="3">Created At</div>
-                <div class="col-3 card-title  text-bold" cols="3">Modified At</div>
+                <div class="col-2 card-title  text-bold" cols="2">Username</div>
+                <div class="col-2 card-title  text-bold" cols="2">Email</div>
+                <div class="col-2 card-title  text-bold" cols="2">Created At</div>
+                <div class="col-2 card-title  text-bold" cols="2">Modified At</div>
+                <div class="col-2 card-title  text-bold" cols="2">delete user</div>
+                <div class="col-2 card-title  text-bold" cols="2">asdf</div>
               </div>
               <div class="table-hover">
                 <div v-if="users.length == 0">
                   There is no data.
                 </div>
                 <div v-else v-for="user in users" :key="user.id" class="row vertical-middle">
-                  <div class="col-3" cols="3">{{ user.name }}</div>
-                  <div class="col-3" cols="3">{{ user.email }}</div>
-                  <div class="col-3" cols="3">{{ dateFormat(user.created_at) }}</div>
-                  <div class="col-3" cols="3">{{ dateFormat(user.updated_at) }}</div>
+                  <div class="col-2" cols="2">{{ user.name }}</div>
+                  <div class="col-2" cols="2">{{ user.email }}</div>
+                  <div class="col-2" cols="2">{{ dateFormat(user.created_at) }}</div>
+                  <div class="col-2" cols="2">{{ dateFormat(user.updated_at) }}</div>
+                  <DeleteUser class="col-2" cols="2"></DeleteUser>
+                  <v-btn class="col-2" cols="2">asdf</v-btn>
                 </div>
               </div>
             </div>
@@ -43,9 +47,12 @@
 
 <script>
   import dayjs from 'dayjs';
+  import DeleteUser from './DeleteUser';
   export default {
     name: 'UsersList',
-
+    components: {
+      DeleteUser
+    },
     data () {
       return {
         users: [],
@@ -58,7 +65,6 @@
       async getUsersList () {
         await axios.get('/api/users').then((res) => {
           this.users = res.data;
-
         });
       },
       logout() {

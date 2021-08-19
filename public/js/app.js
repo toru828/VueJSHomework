@@ -1989,6 +1989,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/DeleteUser.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/DeleteUser.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'DeleteUser',
+  data: function data() {
+    return {};
+  },
+  methods: {
+    onClickDeleteButton: function onClickDeleteButton() {
+      var _this = this;
+
+      axios["delete"]('/api/userDelete', {
+        id: 1
+      }).then(function () {
+        _this.$router.push('/users');
+      });
+      console.log("aaa");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/UsersList.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/UsersList.vue?vue&type=script&lang=js& ***!
@@ -2004,6 +2042,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _DeleteUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DeleteUser */ "./resources/js/components/user/DeleteUser.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2053,9 +2092,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'UsersList',
+  components: {
+    DeleteUser: _DeleteUser__WEBPACK_IMPORTED_MODULE_2__.default
+  },
   data: function data() {
     return {
       users: []
@@ -23909,6 +23956,45 @@ component.options.__file = "resources/js/components/Login.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/user/DeleteUser.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/user/DeleteUser.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteUser_vue_vue_type_template_id_9f1f5702___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteUser.vue?vue&type=template&id=9f1f5702& */ "./resources/js/components/user/DeleteUser.vue?vue&type=template&id=9f1f5702&");
+/* harmony import */ var _DeleteUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteUser.vue?vue&type=script&lang=js& */ "./resources/js/components/user/DeleteUser.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _DeleteUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _DeleteUser_vue_vue_type_template_id_9f1f5702___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteUser_vue_vue_type_template_id_9f1f5702___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/user/DeleteUser.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/user/UsersList.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/user/UsersList.vue ***!
@@ -23966,6 +24052,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/user/DeleteUser.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/user/DeleteUser.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/DeleteUser.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/user/UsersList.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/user/UsersList.vue?vue&type=script&lang=js& ***!
@@ -24008,6 +24110,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_6bdc8b8e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Login.vue?vue&type=template&id=6bdc8b8e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=template&id=6bdc8b8e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/user/DeleteUser.vue?vue&type=template&id=9f1f5702&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/user/DeleteUser.vue?vue&type=template&id=9f1f5702& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUser_vue_vue_type_template_id_9f1f5702___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUser_vue_vue_type_template_id_9f1f5702___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUser_vue_vue_type_template_id_9f1f5702___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteUser.vue?vue&type=template&id=9f1f5702& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/DeleteUser.vue?vue&type=template&id=9f1f5702&");
 
 
 /***/ }),
@@ -24230,6 +24349,35 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/DeleteUser.vue?vue&type=template&id=9f1f5702&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/DeleteUser.vue?vue&type=template&id=9f1f5702& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-btn",
+    { attrs: { color: "primary" }, on: { click: _vm.onClickDeleteButton } },
+    [_vm._v("\n    Delete\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/UsersList.vue?vue&type=template&id=61dc6b6d&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/UsersList.vue?vue&type=template&id=61dc6b6d& ***!
@@ -24306,8 +24454,8 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "col-3 card-title text-bold",
-                            attrs: { cols: "3" }
+                            staticClass: "col-2 card-title  text-bold",
+                            attrs: { cols: "2" }
                           },
                           [_vm._v("Username")]
                         ),
@@ -24315,8 +24463,8 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "col-3 card-title text-bold",
-                            attrs: { cols: "3" }
+                            staticClass: "col-2 card-title  text-bold",
+                            attrs: { cols: "2" }
                           },
                           [_vm._v("Email")]
                         ),
@@ -24324,8 +24472,8 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "col-3 card-title text-bold",
-                            attrs: { cols: "3" }
+                            staticClass: "col-2 card-title  text-bold",
+                            attrs: { cols: "2" }
                           },
                           [_vm._v("Created At")]
                         ),
@@ -24333,10 +24481,28 @@ var render = function() {
                         _c(
                           "div",
                           {
-                            staticClass: "col-3 card-title  text-bold",
-                            attrs: { cols: "3" }
+                            staticClass: "col-2 card-title  text-bold",
+                            attrs: { cols: "2" }
                           },
                           [_vm._v("Modified At")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-2 card-title  text-bold",
+                            attrs: { cols: "2" }
+                          },
+                          [_vm._v("delete user")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-2 card-title  text-bold",
+                            attrs: { cols: "2" }
+                          },
+                          [_vm._v("asdf")]
                         )
                       ]),
                       _vm._v(" "),
@@ -24361,8 +24527,8 @@ var render = function() {
                                     _c(
                                       "div",
                                       {
-                                        staticClass: "col-3",
-                                        attrs: { cols: "3" }
+                                        staticClass: "col-2",
+                                        attrs: { cols: "2" }
                                       },
                                       [_vm._v(_vm._s(user.name))]
                                     ),
@@ -24370,8 +24536,8 @@ var render = function() {
                                     _c(
                                       "div",
                                       {
-                                        staticClass: "col-3",
-                                        attrs: { cols: "3" }
+                                        staticClass: "col-2",
+                                        attrs: { cols: "2" }
                                       },
                                       [_vm._v(_vm._s(user.email))]
                                     ),
@@ -24379,8 +24545,8 @@ var render = function() {
                                     _c(
                                       "div",
                                       {
-                                        staticClass: "col-3",
-                                        attrs: { cols: "3" }
+                                        staticClass: "col-2",
+                                        attrs: { cols: "2" }
                                       },
                                       [
                                         _vm._v(
@@ -24394,8 +24560,8 @@ var render = function() {
                                     _c(
                                       "div",
                                       {
-                                        staticClass: "col-3",
-                                        attrs: { cols: "3" }
+                                        staticClass: "col-2",
+                                        attrs: { cols: "2" }
                                       },
                                       [
                                         _vm._v(
@@ -24404,8 +24570,23 @@ var render = function() {
                                           )
                                         )
                                       ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("DeleteUser", {
+                                      staticClass: "col-2",
+                                      attrs: { cols: "2" }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        staticClass: "col-2",
+                                        attrs: { cols: "2" }
+                                      },
+                                      [_vm._v("asdf")]
                                     )
-                                  ]
+                                  ],
+                                  1
                                 )
                               })
                         ],
