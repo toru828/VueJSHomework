@@ -33,7 +33,7 @@
                   <div class="col-2" cols="2">{{ user.email }}</div>
                   <div class="col-2" cols="2">{{ dateFormat(user.created_at) }}</div>
                   <div class="col-2" cols="2">{{ dateFormat(user.updated_at) }}</div>
-                  <DeleteUser class="col-2" cols="2" :userID="user.id"></DeleteUser>
+                  <DeleteUser class="col-2" cols="2" :userID="user.id" @delete="updateUserList"></DeleteUser>
                   <v-btn class="col-2" cols="2">asdf</v-btn>
                 </div>
               </div>
@@ -73,6 +73,9 @@
       },
       dateFormat(date) {
         return dayjs(date).format('YYYY-MM-DD HH:mm:ss');
+      },
+      updateUserList() {
+        this.getUsersList();
       }
     },
 

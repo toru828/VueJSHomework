@@ -2014,12 +2014,11 @@ __webpack_require__.r(__webpack_exports__);
   props: ["userID"],
   methods: {
     onClickDeleteButton: function onClickDeleteButton() {
-      var _this = this;
-
-      axios["delete"]('/api/userDelete' + this.userID).then(function () {
-        _this.$router.push('/users');
-      });
-      console.log(this.userID);
+      console.log("Try to delete user1");
+      axios["delete"]('/api/userDelete/' + this.userID); // .then(() => {
+      //     this.$emit('delete');
+      //     console.log(this.userID);
+      // });
     }
   }
 });
@@ -2138,6 +2137,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     dateFormat: function dateFormat(date) {
       return dayjs__WEBPACK_IMPORTED_MODULE_1___default()(date).format('YYYY-MM-DD HH:mm:ss');
+    },
+    updateUserList: function updateUserList() {
+      this.getUsersList();
     }
   }
 });
@@ -24573,7 +24575,8 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("DeleteUser", {
                                       staticClass: "col-2",
-                                      attrs: { cols: "2", userID: user.id }
+                                      attrs: { cols: "2", userID: user.id },
+                                      on: { delete: _vm.updateUserList }
                                     }),
                                     _vm._v(" "),
                                     _c(

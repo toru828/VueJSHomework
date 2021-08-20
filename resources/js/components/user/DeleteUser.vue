@@ -14,11 +14,12 @@ export default {
     props: ["userID"],
     methods: {
         onClickDeleteButton() {
-            axios.delete('/api/userDelete' + this.userID)
-                .then(() => {
-                    this.$router.push('/users');
-                });
-            console.log(this.userID);
+            console.log("Try to delete user1");
+            axios.delete('/api/userDelete/' + this.userID)
+                // .then(() => {
+                //     this.$emit('delete');
+                //     console.log(this.userID);
+                // });
         },
     }
 }
