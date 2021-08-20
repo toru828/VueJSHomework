@@ -19,7 +19,18 @@ class UsersController extends Controller {
         $user->delete();
         return response()->json(null, 204);
     }
-}
 
+    public function update(Request $request, User $user)
+    {
+        $user->update($request->all());
+
+        return response()->json($user, 200);
+    }
+
+    public function store(Request $request)
+    {
+        return Article::create($request->all());
+    }
+}
 
 ?>

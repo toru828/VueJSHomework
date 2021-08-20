@@ -3,10 +3,24 @@
         <v-col cols="12" sm="8">
             <v-card class="elevation-12" color="cream">
                 <v-toolbar color="primary" dark flat>
-                    <v-toolbar-title prepend-icon="lock">Login form</v-toolbar-title>
+                    <v-toolbar-title prepend-icon="lock">Add form</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
                     <v-form>
+                        <ValidationProvider v-slot="{ errors }" name="Name" rules="required">
+                            <v-text-field
+                                    v-model="item.name"
+                                    label="Name *"
+                                    required
+                                    autocomplete="off"
+                                    prepend-icon="mdi-account"
+                                    v-on:keyup.enter="onClickAddButton"
+                                    :error-messages="errors"
+                                    outlined
+                                    class="pt-8"
+                            ></v-text-field>
+                        </ValidationProvider>
+
                         <ValidationProvider v-slot="{ errors }" name="Email" rules="required|email">
                             <v-text-field
                                     v-model="item.email"
@@ -14,7 +28,7 @@
                                     required
                                     autocomplete="off"
                                     prepend-icon="mdi-email"
-                                    v-on:keyup.enter="onClickLoginButton"
+                                    v-on:keyup.enter="onClickAddButton"
                                     :error-messages="errors"
                                     outlined
                                     class="pt-8"
@@ -31,16 +45,17 @@
                                     type="password"
                                     v-model="item.password"
                                     :error-messages="errors"
-                                    v-on:keyup.enter="onClickLoginButton()"
+                                    v-on:keyup.enter="onClickAddButton"
                                     outlined
+                                    required
                             />
                         </ValidationProvider>
                     </v-form>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer />
-                    <v-btn color="primary" :disabled="isLoginBtnDisabled" @click="onClickLoginButton" :loading="isBtnLoading">
-                        Login
+                    <v-btn color="primary" :disabled="isAddBtnDisabled" @click="onClickAddButton" :loading="isBtnLoading">
+                        Add User
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -54,7 +69,7 @@
         ValidationObserver
     } from 'vee-validate/dist/vee-validate.full';
     export default {
-        name: 'Login',
+        name: 'AddForm',
         components: {
             ValidationProvider,
             ValidationObserver,
@@ -62,6 +77,7 @@
         data () {
             return {
                 item : {
+                    name: '',
                     email: '',
                     password: '',
                 },
@@ -71,9 +87,8 @@
             }
         },
         computed: {
-            // a computed getter
-            isLoginBtnDisabled() {
-                if (!this.item.email || !this.item.password) {
+            isAddBtnDisabled() {
+                if (!this.item.email || !this.item.password || !this.item.name) {
                     return true;
                 } else {
                     return false;
@@ -81,30 +96,21 @@
             }
         },
         methods: {
-            async onClickLoginButton() {
-                if (this.isLoginBtnDisabled === true) {
+            async onClickAddButton() {
+                if (this.isAddBtnDisabled === true) {
                     return false;
                 }
                 this.isBtnLoading = true;
-                const loginParam =  {
+                const addParam =  {
+                    name: this.tem.name,
                     email: this.item.email,
                     password: this.item.password,
                 };
-
-                this.$store
-                        .dispatch('login', loginParam)
-                        .then((res) => {
-                            this.$router.push('/users');
-                        })
-                        .catch(function (error) {
-                            alert('Wrong email address or password.');
-
-                        })
-                        .finally(() => {
-                            this.isBtnLoading = false;
-                        });
-            },
+                axios.post('/api/userAdd/' + this.userID, addParam)
+                    .then(() => {
+                        this.$router.push('/users');
+                    });
+            }
         }
-
     }
 </script>

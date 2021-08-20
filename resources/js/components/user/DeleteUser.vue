@@ -14,7 +14,7 @@ export default {
     props: ["userID"],
     methods: {
         onClickDeleteButton() {
-            console.log("Try to delete user1");
+            console.log("Try to delete user");
             axios.delete('/api/userDelete/' + this.userID)
                 // .then(() => {
                 //     this.$emit('delete');

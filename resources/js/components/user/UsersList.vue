@@ -2,6 +2,9 @@
   <div>
     <v-app-bar app clipped-left style="background-color: #39b704;">
       <v-col cols="2" class="ml-0 pl-0">
+        <v-tabs background-color="#39b704" right dark>
+          <AddUser></AddUser>
+        </v-tabs>
       </v-col>
       <v-col cols="10">
         <v-tabs background-color="#39b704" right dark>
@@ -22,7 +25,7 @@
                 <div class="col-2 card-title  text-bold" cols="2">Created At</div>
                 <div class="col-2 card-title  text-bold" cols="2">Modified At</div>
                 <div class="col-2 card-title  text-bold" cols="2">delete user</div>
-                <div class="col-2 card-title  text-bold" cols="2">asdf</div>
+                <div class="col-2 card-title  text-bold" cols="2">edit user</div>
               </div>
               <div class="table-hover">
                 <div v-if="users.length == 0">
@@ -33,8 +36,8 @@
                   <div class="col-2" cols="2">{{ user.email }}</div>
                   <div class="col-2" cols="2">{{ dateFormat(user.created_at) }}</div>
                   <div class="col-2" cols="2">{{ dateFormat(user.updated_at) }}</div>
-                  <DeleteUser class="col-2" cols="2" :userID="user.id" @delete="updateUserList"></DeleteUser>
-                  <v-btn class="col-2" cols="2">asdf</v-btn>
+                  <DeleteUser class="col-2" cols="2" :userID="user.id" @delete="getUsersList()"></DeleteUser>
+                  <EditUser class="col-2" cols="2" :userID="user.id" @click="goToEdit()"></EditUser>
                 </div>
               </div>
             </div>
@@ -48,10 +51,14 @@
 <script>
   import dayjs from 'dayjs';
   import DeleteUser from './DeleteUser';
+  import EditUser from './EditUser';
+  import AddUser from './AddUser';
   export default {
     name: 'UsersList',
     components: {
-      DeleteUser
+      DeleteUser,
+      EditUser,
+      AddUser
     },
     data () {
       return {
@@ -75,7 +82,7 @@
         return dayjs(date).format('YYYY-MM-DD HH:mm:ss');
       },
       updateUserList() {
-        this.getUsersList();
+        this.getUserList();
       }
     },
 

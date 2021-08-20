@@ -12,3 +12,5 @@ Route::post('login', 'App\Http\Controllers\Auth\Api\LoginController@login')->nam
 Route::get('login/exist_email/{email}', 'App\Http\Controllers\Auth\Api\LoginController@existEmail')->name('api.login.exist_email');
 
 Route::delete('userDelete/{id}', 'App\Http\Controllers\Auth\Api\UsersController@delete')->name('api.userDelete');
+Route::put('userEdit/{id}', 'App\Http\Controllers\Auth\Api\UsersController@update')->name('api.userEdit');
+Route::post('userAdd/{id}', 'App\Http\Controllers\Auth\Api\UsersController@store')->name('api.userAdd');
