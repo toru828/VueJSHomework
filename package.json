@@ -29,6 +29,7 @@
         "js-cookie": "^3.0.0",
         "vee-validate": "^3.4.11",
         "vue-loader": "^15.9.8",
+        "vue-sweetalert2": "^5.0.2",
         "vuetify": "^2.5.8",
         "vuex-persistedstate": "^4.0.0"
     }

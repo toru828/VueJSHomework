@@ -1,16 +1,24 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('logout', 'App\Http\Controllers\Auth\Api\LoginController@logout')->name('api.logout');
-    Route::get('users', 'App\Http\Controllers\Auth\Api\UsersController@index')->name('api.users');
+    Route::post('logout', 'Auth\Api\LoginController@logout')->name('api.logout');
+    Route::resources([
+        'users' => Api\UsersController::class
+    ]);
+
 });
 
-Route::post('login', 'App\Http\Controllers\Auth\Api\LoginController@login')->name('api.login');
-Route::get('login/exist_email/{email}', 'App\Http\Controllers\Auth\Api\LoginController@existEmail')->name('api.login.exist_email');
-
-Route::delete('userDelete/{id}', 'App\Http\Controllers\Auth\Api\UsersController@delete')->name('api.userDelete');
-Route::put('userEdit/{id}', 'App\Http\Controllers\Auth\Api\UsersController@update')->name('api.userEdit');
-Route::post('userAdd/{id}', 'App\Http\Controllers\Auth\Api\UsersController@store')->name('api.userAdd');
+Route::post('login', 'Auth\Api\LoginController@login')->name('api.login');
+Route::get('login/exist_email/{email}', 'Auth\Api\LoginController@existEmail')->name('api.login.exist_email');

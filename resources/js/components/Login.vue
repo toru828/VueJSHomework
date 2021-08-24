@@ -9,30 +9,30 @@
                     <v-form>
                         <ValidationProvider v-slot="{ errors }" name="Email" rules="required|email">
                             <v-text-field
-                                    v-model="item.email"
-                                    label="Email *"
-                                    required
-                                    autocomplete="off"
-                                    prepend-icon="mdi-email"
-                                    v-on:keyup.enter="onClickLoginButton"
-                                    :error-messages="errors"
-                                    outlined
-                                    class="pt-8"
+                                v-model="item.email"
+                                label="Email *"
+                                required
+                                autocomplete="off"
+                                prepend-icon="mdi-account"
+                                v-on:keyup.enter="onClickLoginButton"
+                                :error-messages="errors"
+                                outlined
+                                class="pt-8"
                             ></v-text-field>
                             <span style="color: #ff5252; font-size: 12px; padding-left: 33px;">{{ errorEmail }}</span>
                         </ValidationProvider>
 
                         <ValidationProvider v-slot="{ errors }" name="Password" rules="required">
                             <v-text-field
-                                    id="password"
-                                    label="Password *"
-                                    name="password"
-                                    prepend-icon="mdi-lock"
-                                    type="password"
-                                    v-model="item.password"
-                                    :error-messages="errors"
-                                    v-on:keyup.enter="onClickLoginButton()"
-                                    outlined
+                                id="password"
+                                label="Password *"
+                                name="password"
+                                prepend-icon="mdi-lock"
+                                type="password"
+                                v-model="item.password"
+                                :error-messages="errors"
+                                v-on:keyup.enter="onClickLoginButton()"
+                                outlined
                             />
                         </ValidationProvider>
                     </v-form>
@@ -49,62 +49,61 @@
 </template>
 
 <script>
-    import {
+import {
+    ValidationProvider,
+    ValidationObserver
+} from 'vee-validate/dist/vee-validate.full';
+export default {
+  name: 'Login',
+    components: {
         ValidationProvider,
-        ValidationObserver
-    } from 'vee-validate/dist/vee-validate.full';
-    export default {
-        name: 'Login',
-        components: {
-            ValidationProvider,
-            ValidationObserver,
-        },
-        data () {
-            return {
-                item : {
-                    email: '',
-                    password: '',
-                },
-                isOk:  false,
-                isBtnLoading: false,
-                errorEmail: '',
-            }
-        },
-        computed: {
-            // a computed getter
-            isLoginBtnDisabled() {
-                if (!this.item.email || !this.item.password) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        },
-        methods: {
-            async onClickLoginButton() {
-                if (this.isLoginBtnDisabled === true) {
-                    return false;
-                }
-                this.isBtnLoading = true;
-                const loginParam =  {
-                    email: this.item.email,
-                    password: this.item.password,
-                };
-
-                this.$store
-                        .dispatch('login', loginParam)
-                        .then((res) => {
-                            this.$router.push('/users');
-                        })
-                        .catch(function (error) {
-                            alert('Wrong email address or password.');
-
-                        })
-                        .finally(() => {
-                            this.isBtnLoading = false;
-                        });
-            },
-        }
-
+        ValidationObserver,
+    },
+  data () {
+    return {
+      item : {
+          email: '',
+          password: '',
+      },
+        isOk:  false,
+        isBtnLoading: false,
+        errorEmail: '',
     }
+  },
+    computed: {
+        // a computed getter
+        isLoginBtnDisabled() {
+            if (!this.item.email || !this.item.password) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    methods: {
+        async onClickLoginButton() {
+            if (this.isLoginBtnDisabled === true) {
+                return false;
+            }
+            this.isBtnLoading = true;
+            const loginParam =  {
+                email: this.item.email,
+                password: this.item.password,
+            };
+
+            this.$store
+                .dispatch('login', loginParam)
+                .then((res) => {
+                    this.$router.push('/users');
+                })
+                .catch(function (error) {
+
+                })
+                .finally(() => {
+                    this.isBtnLoading = false;
+                });
+        },
+    }
+
+}
 </script>
