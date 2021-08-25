@@ -26,11 +26,6 @@ class UsersController extends Controller {
 
         return response()->json($user, 200);
     }
-
-    public function store(Request $request)
-    {
-        return Article::create($request->all());
-    }
 }
 
 ?>
