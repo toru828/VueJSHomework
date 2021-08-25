@@ -3,7 +3,16 @@
         <v-app-bar app clipped-left style="background-color: #39b704;">
             <v-col cols="2" class="ml-0 pl-0">
                 <v-tabs background-color="#39b704" right dark>
-                    <AddUser></AddUser>
+                    <v-btn color="green">
+                        <router-link
+                            class="white--text"
+                            style="text-decoration: none"
+                            :to="{
+                                name: 'AddForm'
+                            }"
+                        >Add User
+                        </router-link>
+                    </v-btn>
                 </v-tabs>
             </v-col>
             <v-col cols="10">
@@ -81,21 +90,31 @@
                                     <div class="col-2" cols="2">
                                         {{ dateFormat(user.updated_at) }}
                                     </div>
-                                    <div>
-                                        <DeleteUser
-                                            class="col-2"
-                                            cols="2"
+                                    <div class="col-2" cols="2">
+                                        <v-btn
                                             :userID="user.id"
-                                            style="margin: 10px 25px"
-                                        ></DeleteUser>
+                                            color="white"
+                                            @click="
+                                                onClickDeleteButton(user.id)
+                                            "
+                                            small
+                                        >
+                                            Delete
+                                        </v-btn>
                                     </div>
-                                    <div>
-                                        <EditUser
-                                            class="col-2"
-                                            cols="2"
-                                            :userID="user.id"
-                                            style="margin: 10px 65px"
-                                        ></EditUser>
+                                    <div class="col-2" cols="2">
+                                        <v-btn color="green" small
+                                            ><router-link
+                                                class="black--text"
+                                                style="text-decoration: none"
+                                                :to="{
+                                                    name: 'EditForm',
+                                                    params: { id: user.id }
+                                                }"
+                                                :userID="user.id"
+                                                >Edit</router-link
+                                            >
+                                        </v-btn>
                                     </div>
                                 </div>
                             </div>
@@ -109,16 +128,10 @@
 
 <script>
 import dayjs from "dayjs";
-import DeleteUser from "./DeleteUser";
-import EditUser from "./Edit/EditUser";
-import AddUser from "./Add/AddUser";
 import Vue from "vue";
 export default {
     name: "UsersList",
     components: {
-        DeleteUser,
-        EditUser,
-        AddUser
     },
     data() {
         return {
@@ -141,8 +154,13 @@ export default {
         dateFormat(date) {
             return dayjs(date).format("YYYY-MM-DD HH:mm:ss");
         },
-        updateUserList() {
-            this.getUserList();
+        onClickDeleteButton(userID) {
+            let check = window.confirm("Do you want to delete it?");
+            if (check) {
+                axios.delete("/api/users/" + userID).then(() => {
+                    this.$router.go({ path: "/users", force: true });
+                });
+            }
         }
     }
 };

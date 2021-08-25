@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import UsersList from '@/components/user/UsersList'
-import EditForm from '@/components/user/Edit/EditForm'
-import AddForm from '@/components/user/Add/AddForm';
+import EditForm from '@/components/user/EditForm'
+import AddForm from '@/components/user/AddForm';
 
 Vue.use(Router)
 
