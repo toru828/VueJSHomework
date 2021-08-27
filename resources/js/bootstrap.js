@@ -52,11 +52,11 @@ axios.interceptors.response.use((response) => {
     } else {
         Swal.fire(
             `${error.response.status} ${error.response.statusText}`,
-            "A system error has occurred. Sorry to trouble you, but please try again.",
+            error.response.data.message + JSON.stringify(error.response.data.errors).replaceAll('{"email":["', "").replaceAll('"]}', ""),
             'error'
         );
+        router.push('/users');
     }
-
     return Promise.reject(error);
 });
 
