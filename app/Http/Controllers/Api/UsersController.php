@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPostRequest;
+use App\Http\Requests\UserPutRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +49,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update($id, UserPutRequest $request)
     {
         $requestData = $request->only('name', 'email', 'password');
         if($requestData['password']) {
@@ -68,7 +69,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserPostRequest $request)
     {
         $params = $request->only('name', 'email', 'password');
         $params['password'] = bcrypt($params['password']);

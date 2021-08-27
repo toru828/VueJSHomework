@@ -136,19 +136,6 @@ export default {
 
             this.isBtnLoading = true;
 
-            if (this.user.email === this.userEmail) {
-            } else {
-                for (let i = 0; i < this.users.length; i++) {
-                    if (this.user.email === this.users[i].email) {
-                        window.alert(
-                            "The email has already been used. Please use another email."
-                        );
-                        this.isBtnLoading = false;
-                        return;
-                    }
-                }
-            }
-
             await axios.put("/api/users/" + this.$route.params.id, this.user);
             this.$router.push("/users")
             .catch(function (error) {

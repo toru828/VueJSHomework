@@ -2153,7 +2153,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2167,38 +2166,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 _this2.isBtnLoading = true;
-                i = 0;
-
-              case 4:
-                if (!(i < _this2.users.length)) {
-                  _context.next = 12;
-                  break;
-                }
-
-                if (!(_this2.user.email === _this2.users[i].email)) {
-                  _context.next = 9;
-                  break;
-                }
-
-                window.alert("The email has already been used. Please use another email.");
-                _this2.isBtnLoading = false;
-                return _context.abrupt("return");
-
-              case 9:
-                i++;
-                _context.next = 4;
-                break;
-
-              case 12:
-                _context.next = 14;
+                _context.next = 5;
                 return axios.post("/api/users", _this2.user);
 
-              case 14:
+              case 5:
                 _this2.$router.push("/users")["catch"](function (error) {})["finally"](function () {
                   _this2.isBtnLoading = false;
                 });
 
-              case 15:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -2365,7 +2341,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2379,48 +2354,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 _this2.isBtnLoading = true;
-
-                if (!(_this2.user.email === _this2.userEmail)) {
-                  _context.next = 6;
-                  break;
-                }
-
-                _context.next = 15;
-                break;
-
-              case 6:
-                i = 0;
-
-              case 7:
-                if (!(i < _this2.users.length)) {
-                  _context.next = 15;
-                  break;
-                }
-
-                if (!(_this2.user.email === _this2.users[i].email)) {
-                  _context.next = 12;
-                  break;
-                }
-
-                window.alert("The email has already been used. Please use another email.");
-                _this2.isBtnLoading = false;
-                return _context.abrupt("return");
-
-              case 12:
-                i++;
-                _context.next = 7;
-                break;
-
-              case 15:
-                _context.next = 17;
+                _context.next = 5;
                 return axios.put("/api/users/" + _this2.$route.params.id, _this2.user);
 
-              case 17:
+              case 5:
                 _this2.$router.push("/users")["catch"](function (error) {})["finally"](function () {
                   _this2.isBtnLoading = false;
                 });
 
-              case 18:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -2736,7 +2678,8 @@ axios.interceptors.response.use(function (response) {
     _store__WEBPACK_IMPORTED_MODULE_0__.default.dispatch('logout');
     _router__WEBPACK_IMPORTED_MODULE_1__.default.push('/');
   } else {
-    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire("".concat(error.response.status, " ").concat(error.response.statusText), "A system error has occurred. Sorry to trouble you, but please try again.", 'error');
+    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire("".concat(error.response.status, " ").concat(error.response.statusText), error.response.data.message + JSON.stringify(error.response.data.errors), 'error');
+    _router__WEBPACK_IMPORTED_MODULE_1__.default.push('/users');
   }
 
   return Promise.reject(error);
