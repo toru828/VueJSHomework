@@ -52,7 +52,7 @@ axios.interceptors.response.use((response) => {
     } else {
         Swal.fire(
             `${error.response.status} ${error.response.statusText}`,
-            error.response.data.message + JSON.stringify(error.response.data.errors),
+            error.response.data.message + JSON.stringify(error.response.data.errors).replaceAll('{"email":["', "").replaceAll('"]}', ""),
             'error'
         );
         router.push('/users');

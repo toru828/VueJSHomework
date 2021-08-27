@@ -2678,7 +2678,7 @@ axios.interceptors.response.use(function (response) {
     _store__WEBPACK_IMPORTED_MODULE_0__.default.dispatch('logout');
     _router__WEBPACK_IMPORTED_MODULE_1__.default.push('/');
   } else {
-    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire("".concat(error.response.status, " ").concat(error.response.statusText), error.response.data.message + JSON.stringify(error.response.data.errors), 'error');
+    sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire("".concat(error.response.status, " ").concat(error.response.statusText), error.response.data.message + JSON.stringify(error.response.data.errors).replaceAll('{"email":["', "").replaceAll('"]}', ""), 'error');
     _router__WEBPACK_IMPORTED_MODULE_1__.default.push('/users');
   }
 
